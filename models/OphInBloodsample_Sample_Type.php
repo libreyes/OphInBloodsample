@@ -32,7 +32,7 @@
  * @property User $usermodified
  */
 
-class OphInBloodsample_Sample_Type extends BaseActiveRecord
+class OphInBloodsample_Sample_Type extends BaseActiveRecordVersioned
 {
 	/**
 	 * Returns the static model of the specified AR class.
