@@ -81,10 +81,8 @@ CREATE TABLE `ophinbloodsample_sample_type_version` (
 	public function down()
 	{
 		$this->dropColumn('ophinbloodsample_sample_type','deleted');
-		$this->dropColumn('ophinbloodsample_sample_type_version','deleted');
 
 		$this->dropColumn('et_ophinbloodsample_sample','deleted');
-		$this->dropColumn('et_ophinbloodsample_sample_version','deleted');
 
 		$this->dropTable('et_ophinbloodsample_sample_version');
 		$this->dropTable('ophinbloodsample_sample_type_version');
