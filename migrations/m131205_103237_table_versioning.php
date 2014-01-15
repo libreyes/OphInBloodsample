@@ -10,8 +10,8 @@ CREATE TABLE `et_ophinbloodsample_sample_version` (
 	`event_id` int(10) unsigned NOT NULL,
 	`old_dna_no` int(10) unsigned NOT NULL,
 	`blood_date` date DEFAULT NULL,
-	`blood_location` varchar(255) COLLATE utf8_bin DEFAULT '',
-	`comments` text COLLATE utf8_bin,
+	`blood_location` varchar(255) DEFAULT '',
+	`comments` text,
 	`type_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`volume` float NOT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
@@ -27,7 +27,7 @@ CREATE TABLE `et_ophinbloodsample_sample_version` (
 	CONSTRAINT `acv_et_ophinbloodsample_sample_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophinbloodsample_sample_ev_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_ophinbloodsample_sample_type_fk` FOREIGN KEY (`type_id`) REFERENCES `ophinbloodsample_sample_type` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophinbloodsample_sample_version','id','int(10) unsigned NOT NULL');
@@ -45,7 +45,7 @@ CREATE TABLE `et_ophinbloodsample_sample_version` (
 		$this->execute("
 CREATE TABLE `ophinbloodsample_sample_type_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -56,7 +56,7 @@ CREATE TABLE `ophinbloodsample_sample_type_version` (
 	KEY `acv_ophinbloodsample_sample_type_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_ophinbloodsample_sample_type_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophinbloodsample_sample_type_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophinbloodsample_sample_type_version','id','int(10) unsigned NOT NULL');
